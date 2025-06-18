@@ -38,14 +38,14 @@ CREATE TABLE `user` (
   `senha` varchar(255) NOT NULL,
   `tipo` enum('User','Admin') NOT NULL DEFAULT 'User',
   `cep` varchar(9) NOT NULL,
-  `logradouro` varchar(100) NOT NULL,
+  `rua` varchar(100) NOT NULL,
   `bairro` varchar(100) NOT NULL,
   `cidade` varchar(100) NOT NULL,
   `estado` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-INSERT INTO `user` (`idUser`, `nome`, `email`, `cpf`, `senha`, `tipo`, `cep`, `logradouro`, `bairro`, `cidade`, `estado`) VALUES
+INSERT INTO `user` (`idUser`, `nome`, `email`, `cpf`, `senha`, `tipo`, `cep`, `rua`, `bairro`, `cidade`, `estado`) VALUES
 (1, 'Admin', 'admin@loki.com', '', '102030', 'Admin', '', '', '', '', '');
 
 ALTER TABLE `categorias`
