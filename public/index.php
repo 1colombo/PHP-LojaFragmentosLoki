@@ -22,5 +22,6 @@ include_once '../src/config/init.php';
         <p class="mt-3">Tipo: <?= htmlspecialchars($_SESSION['tipo'])?>! </p>
       </div>
       <?php endif; ?>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
