@@ -1,14 +1,19 @@
 <?php
 include_once __DIR__ . '/../src/config/init.php';
-$conn = connectBanco();
+$conexao = connectBanco();
 
-$sql = "SELECT produtos.idProdutos, produtos.nome, produtos.preco, produtos.imagem, categorias.nome AS categoria, raridades.nivel AS raridade, universos.nome AS universo
-        FROM produtos
-        JOIN categorias ON produtos.idCategorias = categorias.idCategoria
-        JOIN raridades ON produtos.idRaridades = raridades.idRaridades
-        JOIN universos ON produtos.idUniversos = universos.idUniversos";
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_produto'])) {
+    $id = $_POST['id'];
+    $stmt = $conexao->prepare("DELETE FROM produtos WHERE idProdutos = ?");
+    $stmt->bind_param("i", $id);
+    
+    if ($stmt->execute()) {
+        $_SESSION['mensagem'] = 'Usuário excluído com sucesso!';
+    } else {
+        $_SESSION['mensagem'] = 'Erro ao excluir usuário.';
+    }
+}
 
-$result = mysqli_query($conn, $sql);
 ?>
 
 <!doctype html>
@@ -16,7 +21,7 @@ $result = mysqli_query($conn, $sql);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Home</title>
+  <title>Produtos</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -53,7 +58,15 @@ $result = mysqli_query($conn, $sql);
               </tr>
             </thead>
             <tbody>
-              <?php while($produto = mysqli_fetch_assoc($result)): ?>
+              <?php 
+                $sql = "SELECT produtos.idProdutos, produtos.nome, produtos.preco, produtos.imagem, categorias.nome AS categoria, raridades.nivel AS raridade, universos.nome AS universo
+                FROM produtos
+                JOIN categorias ON produtos.idCategorias = categorias.idCategoria
+                JOIN raridades ON produtos.idRaridades = raridades.idRaridades
+                JOIN universos ON produtos.idUniversos = universos.idUniversos";
+
+                $result = mysqli_query($conexao, $sql);
+                while($produto = mysqli_fetch_assoc($result)): ?>
                 <tr>
                   <td>
                     <?php if ($produto['imagem']): ?>
@@ -69,7 +82,13 @@ $result = mysqli_query($conn, $sql);
                   <td><?= $produto['universo'] ?></td>
                   <td>
                     <a href="produto_edit.php?id=<?= $produto['idProdutos'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="produto_delete.php?id=<?= $produto['idProdutos'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza?')">Excluir</a>
+
+                    <form action="" method="POST" class="d-inline">
+                      <input type="hidden" name="id" value="<?= $usuario['idProdutos'] ?>">
+                      <button type="submit" name="delete_produto" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')">
+                        Excluir
+                    </button>
+                  </form>
                   </td>
                 </tr>
               <?php endwhile; ?>
