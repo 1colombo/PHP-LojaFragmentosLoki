@@ -69,7 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_usuario'])) {
                 <td><?= $usuario['tipo'] ?></td>
                 <td>
                   <a href="../admin/user_view.php?id=<?= $usuario['idUser'] ?>" class="btn btn-dark btn-sm">Visualizar</a>
-                  <a href="../admin/user_edit.php?id=<?= $usuario['idUser'] ?>" class="btn btn-warning btn-sm">Editar</a>
+
+                  <a href="../admin/user_edit.php?id=<?= $usuario['idUser'] ?>" class="btn btn-dark btn-sm">Editar</a>
                   
                   <form action="" method="POST" class="d-inline">
                     <input type="hidden" name="id" value="<?= $usuario['idUser'] ?>">
@@ -91,5 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_usuario'])) {
         </div>
       </div>
     </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
