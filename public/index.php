@@ -1,5 +1,5 @@
 <?php 
-include_once '../src/config/conexao.php';
+include_once '../src/config/init.php';
 
 echo "Conectado!";
 ?>
