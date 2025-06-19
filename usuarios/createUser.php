@@ -9,6 +9,7 @@ $cep = $rua = $bairro = $cidade = $estado = "";
 $nome = $email = $cpf = $senha = "";
 $mensagem = "";
 
+//API ViaCEP
 // Se clicou no botão "Buscar CEP"
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar_cep'])) {
     $cep = preg_replace('/\D/', '', $_POST['cep']);
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar_cep'])) {
     }
 }
 
+//Formulário de Cadastro conectando ao banco de dados
 // Se clicou no botão "Registrar"
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
     $nome    = trim($_POST['nome'] ?? '');
@@ -67,14 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
         if ($verifica->num_rows > 0) {
             $mensagem = "CPF já cadastrado.";
         } else {
-            // Tudo certo, insere
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("INSERT INTO user (nome, email, cpf, senha, cep, rua, bairro, cidade, estado, tipo)
                                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssssssss", $nome, $email, $cpf, $senha_hash, $cep, $rua, $bairro, $cidade, $estado, $tipo);
 
             if ($stmt->execute()) {
-                $_SESSION['mensagem'] = "Usuário cadastrado com sucesso!";
+                echo "Usuário cadastrado com sucesso!";
                 header("Location: ../public/index.php");
                 exit();
             } else {
@@ -154,8 +155,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
       <div class="mb-3">
         <button type="submit" name="registrar" class="btn btn-success">Registrar</button>
       </div>
-
     </form>
+    <div class="mb-3">
+        <a href="login.php" class="btn btn-secondary">Voltar</a>
+    </div>
 </div>
 </body>
 </html>
