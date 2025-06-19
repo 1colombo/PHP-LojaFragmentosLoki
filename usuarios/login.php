@@ -24,9 +24,7 @@ body {
                     <h4>Login</h4>
                 </div>
                 <div class="card-body">
-                <?php if (!empty($_SESSION['mensagem'])): ?>
-                    <div class="alert alert-warning"><?= htmlspecialchars($_SESSION['mensagem']) ?></div>
-                <?php unset($_SESSION['mensagem']); endif?>
+                <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
                     <form action="logar.php" method="POST">
                         <div class="mb-3">
                             <label>Email</label>

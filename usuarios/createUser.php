@@ -100,28 +100,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 <body>
 <div class="container py-5">
     <h1 class="text-white">Cadastro de Usuários</h1>
-
-    <?php if (!empty($_SESSION['mensagem'])): ?>
-      <div class="alert alert-warning"><?= htmlspecialchars($_SESSION['mensagem']) ?></div>
-      <?php unset($_SESSION['mensagem']); endif?>
-
+    <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
     <form method="POST" class="text-white">
-
       <div class="mb-3 w-75">
         <label class="form-label">Nome</label>
         <input type="text" class="form-control" name="nome" value="<?= htmlspecialchars($nome) ?>">
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">Email</label>
         <input type="email" class="form-control" name="email" value="<?= htmlspecialchars($email) ?>">
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">CPF</label>
         <input type="text" class="form-control" name="cpf" value="<?= htmlspecialchars($cpf) ?>">
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">CEP</label>
         <div class="d-flex">
@@ -129,32 +121,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
           <button type="submit" name="buscar_cep" class="btn btn-outline-info">Buscar CEP</button>
         </div>
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">Rua</label>
         <input type="text" class="form-control" name="rua" value="<?= htmlspecialchars($rua) ?>">
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">Bairro</label>
         <input type="text" class="form-control" name="bairro" value="<?= htmlspecialchars($bairro) ?>">
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">Cidade</label>
         <input type="text" class="form-control" name="cidade" value="<?= htmlspecialchars($cidade) ?>">
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">Estado</label>
         <input type="text" class="form-control" name="estado" value="<?= htmlspecialchars($estado) ?>">
       </div>
-
       <div class="mb-3 w-75">
         <label class="form-label">Senha</label>
         <input type="password" class="form-control" name="password">
       </div>
-
       <div class="mb-3">
         <button type="submit" name="registrar" class="btn btn-success">Registrar</button>
       </div>
