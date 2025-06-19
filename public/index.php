@@ -16,7 +16,7 @@ include_once '../src/config/init.php';
     <div class="container text-white">
       <h1 class="mt-5" >Bem-vindo ao Fragmentos de Loki</h1>
       <p class="lead">Explore o multiverso de Loki e descubra suas variantes, dispositivos da AVT e artefatos temporais.</p>
-      <!-- Colocar nome user -->
+      <!-- Verifica se está logado-->
       <?php if (isLoggedIn()): ?>
         <p class="mt-3">Olá, <?= htmlspecialchars($_SESSION['nome'])?>! </p>
         <p class="mt-3">Tipo: <?= htmlspecialchars($_SESSION['tipo'])?>! </p>

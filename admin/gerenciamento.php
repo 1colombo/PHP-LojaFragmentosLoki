@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include_once __DIR__ . '/../src/config/init.php';
 ?>
 
@@ -13,7 +12,7 @@ include_once __DIR__ . '/../src/config/init.php';
     <link rel="stylesheet" href="../assets/css/style.css">
   </head>
   <body>
-    <?php include __DIR__ . '/navbar.php'; ?>
+    <?php include __DIR__ . '/../public/navbar.php'; ?>
     <div class="container text-white">
       <h1 class="mt-5" >Gerenciador de Produtos</h1>
       <p class="lead">Acesso permitido somente a Admins.</p>
