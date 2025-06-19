@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 
             if ($stmt->execute()) {
                 echo "Usuário cadastrado com sucesso!";
-                header("Location: ../public/index.php");
+                header("Location: ../usuarios/login.php");
                 exit();
             } else {
                 $mensagem = "Erro ao cadastrar: " . $stmt->error;

@@ -12,7 +12,7 @@
 body {
     min-height: 100vh;
     display: flex;
-    background-color:rgb(3, 27, 3);
+    background-color:rgb(20, 19, 19);
 }
 </style>
 <body>

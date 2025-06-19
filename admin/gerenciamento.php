@@ -1,5 +1,6 @@
 <?php 
-include_once '../src/config/init.php';
+session_start();
+include_once __DIR__ . '/../src/config/init.php';
 ?>
 
 <!doctype html>
@@ -14,9 +15,8 @@ include_once '../src/config/init.php';
   <body>
     <?php include __DIR__ . '/navbar.php'; ?>
     <div class="container text-white">
-      <h1 class="mt-5" >Bem-vindo ao Fragmentos de Loki</h1>
-      <p class="lead">Explore o multiverso de Loki e descubra suas variantes, dispositivos da AVT e artefatos temporais.</p>
-      <!-- Colocar nome user -->
+      <h1 class="mt-5" >Gerenciador de Produtos</h1>
+      <p class="lead">Acesso permitido somente a Admins.</p>
       <?php if (isLoggedIn()): ?>
         <p class="mt-3">Olá, <?= htmlspecialchars($_SESSION['nome'])?>! </p>
         <p class="mt-3">Tipo: <?= htmlspecialchars($_SESSION['tipo'])?>! </p>

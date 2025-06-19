@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once __DIR__ . '/../src/config/conexao.php';
+include_once __DIR__ . '/../src/config/init.php';
 
 $conn = connectBanco();
 
@@ -25,7 +25,11 @@ if ($usuario = $resultado->fetch_assoc()) {
         $_SESSION['tipo'] = $usuario['tipo'];
         $_SESSION['logado'] = true;
 
-        header("Location: ../public/index.php");
+        if (isAdmin()) {
+            header("Location: ../admin/gerenciamento.php");
+        } else {
+            header("Location: ../public/index.php");
+        }
         exit();
     } else {
         $_SESSION['mensagem'] = "Senha incorreta.";
