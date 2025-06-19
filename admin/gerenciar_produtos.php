@@ -2,8 +2,7 @@
 include_once __DIR__ . '/../src/config/init.php';
 $conn = connectBanco();
 
-$sql = "SELECT produtos.idProdutos, produtos.nome, produtos.preco, produtos.imagem,
-               categorias.nome AS categoria, raridades.nivel AS raridade, universos.nome AS universo
+$sql = "SELECT produtos.idProdutos, produtos.nome, produtos.preco, produtos.imagem, categorias.nome AS categoria, raridades.nivel AS raridade, universos.nome AS universo
         FROM produtos
         JOIN categorias ON produtos.idCategorias = categorias.idCategoria
         JOIN raridades ON produtos.idRaridades = raridades.idRaridades
