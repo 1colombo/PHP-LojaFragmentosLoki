@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
       </div>
     </form>
     <div class="mb-3">
-        <a href="login.php" class="btn btn-secondary">Voltar</a>
+        <a href="gerenciamento.php" class="btn btn-secondary">Voltar</a>
     </div>
 </div>
 <?php else: ?>
