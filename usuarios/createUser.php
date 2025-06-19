@@ -2,6 +2,9 @@
 session_start();
 include_once __DIR__ . '/../src/config/conexao.php';
 
+$mensagem = $_SESSION['mensagem'] ?? '';
+unset($_SESSION['mensagem']);
+
 $conn = connectBanco();
 
 // Inicializa variáveis
@@ -30,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['buscar_cep'])) {
                 $cidade = $dados['localidade'] ?? '';
                 $estado = $dados['uf'] ?? '';
             } else {
-                $mensagem = "CEP não encontrado.";
+                $_SESSION['mensagem'] = "CEP não encontrado.";
             }
         } else {
-            $mensagem = "Erro ao buscar o CEP.";
+            $_SESSION['mensagem'] = "Erro ao buscar o CEP.";
         }
     } else {
-        $mensagem = "CEP inválido.";
+      $_SESSION['mensagem'] = "CEP inválido.";
     }
 }
 
@@ -58,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
         empty($nome) || empty($email) || empty($cpf) || empty($senha) ||
         empty($cep) || empty($rua) || empty($bairro) || empty($cidade) || empty($estado)
     ) {
-        $mensagem = "Todos os campos são obrigatórios.";
+        $_SESSION['mensagem'] = "Todos os campos são obrigatórios.";
     } else {
         // Verifica se CPF já está cadastrado
         $verifica = $conn->prepare("SELECT idUser FROM user WHERE cpf = ?");
@@ -67,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
         $verifica->store_result();
 
         if ($verifica->num_rows > 0) {
-            $mensagem = "CPF já cadastrado.";
+            $_SESSION['mensagem'] = "CPF já cadastrado.";
         } else {
             $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("INSERT INTO user (nome, email, cpf, senha, cep, rua, bairro, cidade, estado, tipo)
@@ -75,11 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
             $stmt->bind_param("ssssssssss", $nome, $email, $cpf, $senha_hash, $cep, $rua, $bairro, $cidade, $estado, $tipo);
 
             if ($stmt->execute()) {
-                echo "Usuário cadastrado com sucesso!";
+                $_SESSION['mensagem'] = "Usuário cadastrado com sucesso!";
                 header("Location: ../usuarios/login.php");
                 exit();
             } else {
-                $mensagem = "Erro ao cadastrar: " . $stmt->error;
+                $_SESSION['mensagem'] = "Erro ao cadastrar: " . $stmt->error;
             }
         }
     }
@@ -98,9 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 <div class="container py-5">
     <h1 class="text-white">Cadastro de Usuários</h1>
 
-    <?php if (!empty($mensagem)): ?>
-      <div class="alert alert-warning"><?= htmlspecialchars($mensagem) ?></div>
-    <?php endif; ?>
+    <?php if (!empty($_SESSION['mensagem'])): ?>
+      <div class="alert alert-warning"><?= htmlspecialchars($_SESSION['mensagem']) ?></div>
+      <?php unset($_SESSION['mensagem']); endif?>
 
     <form method="POST" class="text-white">
 
