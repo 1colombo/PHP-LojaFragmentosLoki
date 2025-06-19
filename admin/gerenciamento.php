@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_usuario'])) {
     <link rel="stylesheet" href="../assets/css/style.css">
   </head>
   <body>
+    <?php if(isAdmin()): ?>
     <?php include __DIR__ . '/../public/navbar.php'; ?>
     <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
     <div class="container text-white">
@@ -93,5 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_usuario'])) {
       </div>
     </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+  <?php else: ?>
+    <div class="container text-center mt-5">
+      <h1 class="text-danger">Acesso Negado</h1>
+      <p class="text-white">Você não tem permissão para acessar esta página.</p>
+    </div>
+  <?php endif; ?>
   </body>
 </html>

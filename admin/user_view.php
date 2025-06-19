@@ -13,6 +13,7 @@ $conexao = connectBanco();
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+<?php if(isAdmin()): ?>
 <?php include __DIR__ . '/../public/navbar.php'; ?>
 <div class="container mt-5">
     <div class="row">
@@ -56,5 +57,11 @@ $conexao = connectBanco();
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<?php else: ?>
+    <div class="container text-center mt-5">
+        <h1 class="text-danger">Acesso Negado</h1>
+        <p class="text-white">Você não tem permissão para acessar esta página.<p>
+    </div>
+<?php endif; ?>
 </body>
 </html>

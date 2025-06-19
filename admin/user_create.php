@@ -98,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+<?php if(isAdmin()): ?>
 <div class="container py-5">
     <h1 class="text-white">Cadastro de Usuários</h1>
     <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
@@ -156,5 +157,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
         <a href="login.php" class="btn btn-secondary">Voltar</a>
     </div>
 </div>
+<?php else: ?>
+    <div class="container text-center mt-5">
+      <h1 class="text-danger">Acesso Negado</h1>
+      <p class="text-white">Você não tem permissão para acessar esta página.</p>
+    </div>
+  <?php endif; ?>
 </body>
 </html>
