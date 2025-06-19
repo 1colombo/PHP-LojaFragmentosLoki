@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_usuario'])) {
         <div class="card">
           <div class="card-header">
             <h4>Lista de Usuários
-              <a href="adm/usuario_create.php" class="btn btn-dark float-end">Adicionar usuário</a>
+              <a href="../admin/user_create.php" class="btn btn-dark float-end">Adicionar usuário</a>
             </h4>
           </div>
         <div class="card-body">
