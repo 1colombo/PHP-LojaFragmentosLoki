@@ -1,5 +1,9 @@
 <?php 
 include_once '../src/config/init.php';
+
+// Conectar ao banco e buscar categorias reais
+$conn = connectBanco();
+$categorias = mysqli_query($conn, "SELECT * FROM categorias");
 ?>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -22,25 +26,29 @@ include_once '../src/config/init.php';
             Categorias
           </a>
           <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="categoriasDropdown">
-            <li><a class="dropdown-item" href="#">Variantes do Loki</a></li>
-            <li><a class="dropdown-item" href="#">Dispositivos AVT</a></li>
-            <li><a class="dropdown-item" href="#">Artefatos Temporais</a></li>
+            <?php while ($cat = mysqli_fetch_assoc($categorias)): ?>
+              <li>
+                <a class="dropdown-item" href="../public/index.php?categoria=<?= $cat['idCategoria'] ?>">
+                  <?= htmlspecialchars($cat['nome']) ?>
+                </a>
+              </li>
+            <?php endwhile; ?>
           </ul>
         </li>
-        <!-- Aparece aqui o link para a área de admin, se o usuário for admin -->
+
         <?php if(isAdmin()): ?>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="../admin/gerenciamento.php" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="../admin/gerenciamento.php" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Áreas Admin
           </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="categoriasDropdown">
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="adminDropdown">
             <li><a class="dropdown-item" href="../admin/gerenciamento.php">Gerenciar Usuários</a></li>
             <li><a class="dropdown-item" href="../admin/gerenciar_produtos.php">Gerenciar Produtos</a></li>
           </ul>
         </li>
         <?php endif; ?>
       </ul>
-      <!-- Aparece aqui o nome do usuário logado, se houver -->
+
       <span class="navbar-text me-3">
         <?php if (isLoggedIn()): ?>
           Olá, <?= htmlspecialchars($_SESSION['nome']) ?>!
@@ -48,7 +56,7 @@ include_once '../src/config/init.php';
           <a href="../usuarios/login.php" class="btn btn-warning">Entrar</a>
         <?php endif; ?>
       </span>
-      <!-- Botão de logout, se o usuário estiver logado -->
+
       <?php if (isLoggedIn()): ?>
       <span class="navbar-text">
         <a href="../usuarios/logout.php" class="btn btn-dark text-white">Sair</a>
