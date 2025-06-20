@@ -98,56 +98,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-<div class="container py-5">
-    <h1 class="text-white">Cadastro de Usuários</h1>
+  <div class="chuva"></div>
+<div class="container py-5" id="cadastro-container">
+    <h4 class="text-white" id="cadastro-text">Cadastro de Usuários</h4>
     <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
-    <form method="POST" class="text-white">
+    <form method="POST" class="text-white" id="form-cadastro">
       <div class="mb-3 w-75">
-        <label class="form-label">Nome</label>
-        <input type="text" class="form-control" name="nome" value="<?= htmlspecialchars($nome) ?>">
+        <input type="text" class="form-control" name="nome" placeholder="Nome" value="<?= htmlspecialchars($nome) ?>">
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">Email</label>
-        <input type="email" class="form-control" name="email" value="<?= htmlspecialchars($email) ?>">
+        <input type="email" class="form-control" name="email" placeholder="Email" value="<?= htmlspecialchars($email) ?>">
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">CPF</label>
-        <input type="text" class="form-control" name="cpf" value="<?= htmlspecialchars($cpf) ?>">
+        <input type="text" class="form-control" name="cpf" placeholder="CPF" value="<?= htmlspecialchars($cpf) ?>">
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">CEP</label>
         <div class="d-flex">
-          <input type="text" class="form-control me-2" name="cep" value="<?= htmlspecialchars($cep) ?>">
-          <button type="submit" name="buscar_cep" class="btn btn-outline-info">Buscar CEP</button>
+          <input type="text" class="form-control me-2" name="cep" placeholder="CEP" value="<?= htmlspecialchars($cep) ?>">
+          <button type="submit" name="buscar_cep" class="btn btn-outline-info" id="btn-form">Buscar CEP</button>
         </div>
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">Rua</label>
-        <input type="text" class="form-control" name="rua" value="<?= htmlspecialchars($rua) ?>">
+        <input type="text" class="form-control" name="rua" placeholder="Rua" value="<?= htmlspecialchars($rua) ?>">
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">Bairro</label>
-        <input type="text" class="form-control" name="bairro" value="<?= htmlspecialchars($bairro) ?>">
+        <input type="text" class="form-control" name="bairro" placeholder="Bairro" value="<?= htmlspecialchars($bairro) ?>">
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">Cidade</label>
-        <input type="text" class="form-control" name="cidade" value="<?= htmlspecialchars($cidade) ?>">
+        <input type="text" class="form-control" name="cidade" placeholder="Cidade" value="<?= htmlspecialchars($cidade) ?>">
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">Estado</label>
-        <input type="text" class="form-control" name="estado" value="<?= htmlspecialchars($estado) ?>">
+        <input type="text" class="form-control" name="estado" placeholder="Estado" value="<?= htmlspecialchars($estado) ?>">
       </div>
       <div class="mb-3 w-75">
-        <label class="form-label">Senha</label>
-        <input type="password" class="form-control" name="password">
+        <input type="password" class="form-control" placeholder="Senha" name="password">
       </div>
       <div class="mb-3">
-        <button type="submit" name="registrar" class="btn btn-success">Registrar</button>
+        <button type="submit" name="registrar" class="btn btn-success" id="btn-form">Registrar</button>
       </div>
     </form>
     <div class="mb-3">
-        <a href="login.php" class="btn btn-secondary">Voltar</a>
+        <a href="login.php" class="btn btn-secondary" id="btn-form">Voltar</a>
     </div>
 </div>
 </body>
+<script src="../assets/js/script.js"></script>
 </html>
