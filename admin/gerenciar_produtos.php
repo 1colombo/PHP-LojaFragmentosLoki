@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_produto'])) {
                     <a href="produto_edit.php?id=<?= $produto['idProdutos'] ?>" class="btn btn-warning btn-sm">Editar</a>
 
                     <form action="" method="POST" class="d-inline">
-                      <input type="hidden" name="id" value="<?= $usuario['idProdutos'] ?>">
+                      <input type="hidden" name="id" value="<?= $produto['idProdutos'] ?>">
                       <button type="submit" name="delete_produto" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')">
                         Excluir
                     </button>
