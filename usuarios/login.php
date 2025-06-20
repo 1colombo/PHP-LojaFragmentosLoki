@@ -33,10 +33,16 @@
                                 <input type="password" name="password" class="form-control" required placeholder="Senha Temporal">
                             </div>
                             <div class="mb-3">
-                                <input type="submit" name="login_btn" class="btn btn-primary" value="Entrar">
+                                <input type="submit" name="login_btn" class="btn btn-primary" id="btn-form" value="Entrar">
                             </div>
                             <div class="mb-3">
-                                <a href="createUser.php" class="btn btn-secondary" id="btn-cadastrar">Cadastrar</a>
+
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-center">Ainda não é uma Variante?</p>
+                            </div>
+                            <div class="mb-3">
+                                <a href="createUser.php" class="btn btn-secondary" id="btn-form">Cadastre-se</a>
                             </div>
                         </form>
                     </div>

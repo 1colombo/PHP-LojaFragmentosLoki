@@ -95,12 +95,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
   <meta charset="UTF-8">
   <title>Cadastro de Usuário</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
   <div class="chuva"></div>
 <div class="container py-5" id="cadastro-container">
-    <h4 class="text-white" id="cadastro-text">Cadastro de Usuários</h4>
+    <h4 id="cadastro-text">Cadastro de Usuários</h4>
     <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
     <form method="POST" class="text-white" id="form-cadastro">
       <div class="mb-3 w-75">
