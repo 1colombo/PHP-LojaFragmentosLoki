@@ -8,6 +8,11 @@ CREATE TABLE `categorias` (
   `nome` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `categorias` (`idCategoria`, `nome`) VALUES
+(1, 'Variantes do Loki'),
+(2, 'Dispositivos da AVT'),
+(3, 'Artefatos Temporais');
+
 CREATE TABLE `produtos` (
   `idProdutos` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -18,16 +23,45 @@ CREATE TABLE `produtos` (
   `idUniversos` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `produtos` (`idProdutos`, `nome`, `preco`, `imagem`, `idCategorias`, `idRaridades`, `idUniversos`) VALUES
+(1, 'Loki Clássico', 100000.00, '', 1, 3, 2),
+(2, 'Kid Loki', 50000.00, '', 1, 2, 2),
+(3, 'Alligator Loki', 500000.00, '', 1, 4, 2),
+(4, 'Sylvie', 100000.00, '', 1, 3, 2),
+(5, 'Loki Presidente', 1000000.00, '', 1, 5, 2),
+(6, 'TempPad', 10000.00, '', 2, 1, 1),
+(7, 'Bastão de Redefinição Temporal', 50000.00, '', 2, 2, 1),
+(8, 'Granada de Redefinição Temporal', 100000.00, '', 2, 3, 1),
+(9, 'Detector de Anomalias Temporais', 50000.00, '', 2, 2, 1),
+(10, 'Colete de Campo da AVT', 10000.00, '', 2, 1, 1),
+(11, 'Pedra do Tempo (Fragmento)', 500000.00, '', 3, 4, 3),
+(12, 'Cetro Original de Loki', 500000.00, '', 3, 4, 3),
+(13, 'Coroa do Loki Prime', 1000000.00, '', 3, 5, 2),
+(14, 'Runas do Engano Antigo', 100000.00, '', 3, 3, 3),
+(15, 'Orbe de Fluxo Temporal', 100000.00, '', 3, 3, 2);
+
 CREATE TABLE `raridades` (
   `idRaridades` int(11) NOT NULL,
   `nivel` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `raridades` (`idRaridades`, `nivel`) VALUES
+(1, 'Comum'),
+(2, 'Incomum'),
+(3, 'Raro'),
+(4, 'Lendário'),
+(5, 'Único');
 
 
 CREATE TABLE `universos` (
   `idUniversos` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `universos` (`idUniversos`, `nome`) VALUES
+(1, 'AVT'),
+(2, 'Linha do Tempo Ramificada'),
+(3, 'Terra-616');
 
 
 CREATE TABLE `user` (
@@ -44,9 +78,8 @@ CREATE TABLE `user` (
   `estado` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
 INSERT INTO `user` (`idUser`, `nome`, `email`, `cpf`, `senha`, `tipo`, `cep`, `rua`, `bairro`, `cidade`, `estado`) VALUES
-(1, 'Admin', 'admin@loki.com', '', '102030', 'Admin', '', '', '', '', '');
+(1, 'João Vitor', 'joao@gmail.com', '56752749019', '$2y$10$g7RswFoO11LYwDGffc9TUOhMEDOQpDZUSAV4DPA8cDcxHTulh0wgW', 'Admin', '13041445', 'Rua da Abolição', 'Ponte Preta', 'Campinas', 'SP');
 
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`idCategoria`);

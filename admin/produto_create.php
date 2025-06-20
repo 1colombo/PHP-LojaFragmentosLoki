@@ -64,9 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label class="form-label">Categoria</label>
         <select class="form-select" name="id_categoria" required>
           <option value="">Selecione</option>
+
+
           <?php while ($categoria = mysqli_fetch_assoc($categorias)): ?>
             <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['nome'] ?></option>
           <?php endwhile; ?>
+
+          
         </select>
       </div>
 
@@ -96,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </div>
 
       <button type="submit" class="btn btn-primary">Cadastrar</button>
-      <a href="produto_index.php" class="btn btn-secondary ms-2">Voltar</a>
+      <a href="gerenciar_produtos.php" class="btn btn-secondary ms-2">Voltar</a>
     </form>
   </div>
   <?php else: ?>
