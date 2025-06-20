@@ -1,6 +1,11 @@
 <?php 
 include_once '../src/config/init.php';
 
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = [];
+}
+
+
 $conn = connectBanco();
 
 $produtos = mysqli_query($conn, "
@@ -67,7 +72,12 @@ $produtos = $result->fetch_all(MYSQLI_ASSOC);
                   <h5 class="card-title"><?= htmlspecialchars($produto['nome']) ?></h5>
                   <p class="card-text">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
                   <p class="card-text"><small class="text-muted"><?= $produto['categoria_nome'] ?> - <?= $produto['raridade'] ?> - <?= $produto['universo'] ?></small></p>
-                  <a href="#" class="btn btn-primary w-100">Ver mais</a>
+                  <form method="POST" action="adicionar_carrinho.php">
+                    <input type="hidden" name="id" value="<?= $produto['idProdutos'] ?>">
+                    <input type="hidden" name="nome" value="<?= $produto['nome'] ?>">
+                    <input type="hidden" name="preco" value="<?= $produto['preco'] ?>">
+                    <button type="submit" class="btn btn-sm btn-success mt-2">Adicionar ao carrinho</button>
+                  </form>
                 </div>
               </div>
             </div>
