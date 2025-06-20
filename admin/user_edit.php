@@ -63,14 +63,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['atualizar'])) {
     <h1>Editar Usuário</h1>
     <?php include_once __DIR__ . '/../src/config/mensagem.php'; ?>
     <form method="POST">
+
         <div class="mb-3">
             <label class="form-label">Nome</label>
             <input type="text" name="nome" class="form-control" value="<?= htmlspecialchars($usuario['nome']) ?>">
         </div>
+
         <div class="mb-3">
             <label class="form-label">Email</label>
             <input type="email" name="email" class="form-control" value="<?= htmlspecialchars($usuario['email']) ?>">
         </div>
+        
         <div class="mb-3">
             <label class="form-label">CPF</label>
             <input type="text" name="cpf" class="form-control" value="<?= htmlspecialchars($usuario['cpf']) ?>">

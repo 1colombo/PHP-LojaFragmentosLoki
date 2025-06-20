@@ -64,9 +64,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label class="form-label">Categoria</label>
         <select class="form-select" name="id_categoria" required>
           <option value="">Selecione</option>
+
+
           <?php while ($categoria = mysqli_fetch_assoc($categorias)): ?>
             <option value="<?= $categoria['idCategoria'] ?>"><?= $categoria['nome'] ?></option>
           <?php endwhile; ?>
+
+          
         </select>
       </div>
 
