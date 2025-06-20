@@ -29,13 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_usuario'])) {
     <?php if(isAdmin()): ?>
     <?php include __DIR__ . '/../public/navbar.php'; ?>
     <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
-    <div class="container text-white">
+    <div class="container" id="gerenciamento">
       <h1 class="mt-5" >Gerenciador de Usuários</h1>
       <p class="lead">Acesso permitido somente a Admins.</p>
     </div>
       <div class="row">
       <div class="col-md-12">
-        <div class="card">
+        <div class="card" id="login-card">
           <div class="card-header">
             <h4>Lista de Usuários
               <a href="../admin/user_create.php" class="btn btn-dark float-end">Adicionar usuário</a>
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_usuario'])) {
                   
                   <form action="" method="POST" class="d-inline">
                     <input type="hidden" name="id" value="<?= $usuario['idUser'] ?>">
-                    <button type="submit" name="delete_usuario" class="btn btn-danger btn-sm" onclick="return confirm('Deseja realmente excluir?')">
+                    <button type="submit" name="delete_usuario" class="btn btn-danger btn-sm" id="btn-admin" onclick="return confirm('Deseja realmente excluir?')">
                       Excluir
                     </button>
                   </form>

@@ -31,12 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_produto'])) {
   <?php include __DIR__ . '/../public/navbar.php'; ?>
   <?php include_once __DIR__ . '/../src/config/mensagem.php'; ?>
 
-  <div class="container text-white">
+  <div class="container" id="gerenciamento">
     <h1 class="mt-5">Gerenciador de Produtos</h1>
     <p class="lead">Acesso permitido somente a Admins.</p>
   </div>
 
-  <div class="row">
+  <div class="row" id="gerencia-user">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">

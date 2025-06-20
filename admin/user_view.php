@@ -15,16 +15,16 @@ $conexao = connectBanco();
 <body>
 <?php if(isAdmin()): ?>
 <?php include __DIR__ . '/../public/navbar.php'; ?>
-<div class="container mt-5">
+<div class="container mt-5" id="gerencia-user">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">
+            <div class="card" id="gerencia-user">
+                <div class="card-header" id="gerencia-user">
                     <h4>Visualizar Usuário
                         <a href="../admin/gerenciamento.php" class="btn btn-danger float-end">Voltar</a>
                     </h4>
                 </div>
-                <div class="card-body">
+                <div class="card-body" id="gerencia-user">
                     <?php
                     if (isset($_GET['id'])) {
                         $usuario_id = mysqli_real_escape_string($conexao, $_GET['id']);
