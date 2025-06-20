@@ -135,7 +135,6 @@ html, body{
   font-weight: 700;
 }
 
-
 @keyframes queda {
     0%   { transform: translateY(0) scale(1); opacity: 1; }
     70%  { opacity: 0.8; }

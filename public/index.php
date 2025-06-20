@@ -50,10 +50,59 @@ $produtos = $result->fetch_all(MYSQLI_ASSOC);
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     <style>
-    .card-img-top {
-      height: 200px;
-      object-fit: cover;
-    }
+    body {
+    color: #00ffcc;
+    font-family: 'Cinzel', serif;
+  }
+
+  .card {
+    border: 1px solid #00ffcc;
+    color: #00ffaa !important;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card-body{
+    background-color: #1e1e1e;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #00ffaa;
+  }
+
+  .card-title {
+    color: #00ffaa;
+    font-size: 1.2rem;
+  }
+
+  .card-text {
+    color: #00ffaa;
+  }
+
+  .small {
+    color: #00ffaa !important;
+  }
+
+  .card-text small {
+    color: #00ffaa;
+  }
+
+  .card-img-top {
+    background-color:rgb(63, 63, 63);
+  }
+
+  .btn-success {
+    background-color: #00cc99;
+    border-color: #00cc99;
+  }
+
+  .btn-success:hover {
+    background-color: #00ffaa;
+    border-color: #00ffaa;
+  }
+
+
+    
   </style>
   </head>
   <body>
@@ -66,13 +115,13 @@ $produtos = $result->fetch_all(MYSQLI_ASSOC);
         <div class="row g-4">
 
           <?php foreach ($produtos as $produto): ?>
-            <div class="col-md-4">
+            <div class="col-md-4" id="card-body">
               <div class="card h-100">
                 <img src="../uploads/<?= htmlspecialchars($produto['imagem']) ?>" class="card-img-top" alt="<?= htmlspecialchars($produto['nome']) ?>">
                 <div class="card-body">
                   <h5 class="card-title"><?= htmlspecialchars($produto['nome']) ?></h5>
                   <p class="card-text">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
-                  <p class="card-text"><small class="text-muted"><?= $produto['categoria_nome'] ?> - <?= $produto['raridade'] ?> - <?= $produto['universo'] ?></small></p>
+                  <p class="card-text"><small><?= $produto['categoria_nome'] ?> - <?= $produto['raridade'] ?> - <?= $produto['universo'] ?></small></p>
                   <form method="POST" action="adicionar_carrinho.php">
                     <input type="hidden" name="id" value="<?= $produto['idProdutos'] ?>">
                     <input type="hidden" name="nome" value="<?= $produto['nome'] ?>">
