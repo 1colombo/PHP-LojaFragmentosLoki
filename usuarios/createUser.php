@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['registrar'])) {
 </head>
 <body>
   <div class="chuva"></div>
-<div class="container py-5" id="cadastro-container">
+<div class="container mt-5" id="cadastro-container">
     <h4 id="cadastro-text">Cadastro de Usuários</h4>
     <?php include_once __DIR__ . '/../src/config/mensagem.php';?>
     <form method="POST" class="text-white" id="form-cadastro">

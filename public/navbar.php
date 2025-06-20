@@ -7,7 +7,32 @@ $conn = connectBanco();
 $categorias = mysqli_query($conn, "SELECT * FROM categorias");
 ?>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fragmentos de Loki</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
+  <style>
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+    .navbar {
+      background-color: #2c2c2c;
+    }
+    .navbar, .navbar a, .navbar-brand, .navbar-nav .nav-link, .navbar-text {
+      color: #00ff99 !important;
+    }
+    .btn:hover {
+      background-color: #00ff99 !important;
+      color: #2c2c2c !important;
+    }
+    
+  </style>
+
+<nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="../public/index.php">Fragmentos de Loki</a>
 
@@ -60,7 +85,7 @@ $categorias = mysqli_query($conn, "SELECT * FROM categorias");
 
       <?php if (isLoggedIn()): ?>
       <span class="navbar-text me-3">
-        <a href="../public/carrinho.php" class="btn btn-light"> Carrinho </a>
+        <a href="../public/carrinho.php" class="btn btn-dark"> Carrinho </a>
       </span>
       <span class="navbar-text">
         <a href="../usuarios/logout.php" class="btn btn-dark text-white">Sair</a>

@@ -48,6 +48,7 @@ $produtos = $result->fetch_all(MYSQLI_ASSOC);
     <title>Fragmentos de Loki</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet">
     <style>
     .card-img-top {
       height: 200px;
@@ -57,7 +58,7 @@ $produtos = $result->fetch_all(MYSQLI_ASSOC);
   </head>
   <body>
     <?php include __DIR__ . '/navbar.php'; ?>
-    <div class="container text-white">
+    <div class="container" id="main-content">
       <h1 class="text-center mt-5" >Bem-vindo ao Fragmentos de Loki</h1>
       <p class="text-center lead">Explore o multiverso de Loki e descubra suas variantes, dispositivos da AVT e artefatos temporais.</p>
       <div class="container py-5">
