@@ -59,6 +59,9 @@ $categorias = mysqli_query($conn, "SELECT * FROM categorias");
       </span>
 
       <?php if (isLoggedIn()): ?>
+      <span class="navbar-text me-3">
+        <a href="../public/carrinho.php" class="btn btn-light"> Carrinho </a>
+      </span>
       <span class="navbar-text">
         <a href="../usuarios/logout.php" class="btn btn-dark text-white">Sair</a>
       </span>
