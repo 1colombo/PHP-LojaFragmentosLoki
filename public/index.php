@@ -10,6 +10,29 @@ $produtos = mysqli_query($conn, "
   JOIN raridades ON produtos.idRaridades = raridades.idRaridades
   JOIN universos ON produtos.idUniversos = universos.idUniversos
 ");
+
+$categoriaSelecionada = isset($_GET['categoria']) ? intval($_GET['categoria']) : null;
+
+// Monta a consulta com ou sem filtro
+if ($categoriaSelecionada) {
+    $stmt = $conn->prepare("SELECT produtos.*, categorias.nome AS categoria_nome, raridades.nivel AS raridade, universos.nome AS universo 
+                FROM produtos
+                JOIN categorias ON produtos.idCategorias = categorias.idCategoria
+                JOIN raridades ON produtos.idRaridades = raridades.idRaridades
+                JOIN universos ON produtos.idUniversos = universos.idUniversos
+                  WHERE produtos.idCategorias = ?");
+    $stmt->bind_param("i", $categoriaSelecionada);
+} else {
+    $stmt = $conn->prepare("SELECT produtos.*, categorias.nome AS categoria_nome, raridades.nivel AS raridade, universos.nome AS universo 
+                FROM produtos
+                JOIN categorias ON produtos.idCategorias = categorias.idCategoria
+                JOIN raridades ON produtos.idRaridades = raridades.idRaridades
+                JOIN universos ON produtos.idUniversos = universos.idUniversos");
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+$produtos = $result->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!doctype html>
@@ -36,19 +59,19 @@ $produtos = mysqli_query($conn, "
         <h1 class="text-center mb-5">Produtos em Destaque</h1>
         <div class="row g-4">
 
-          <?php while ($p = mysqli_fetch_assoc($produtos)): ?>
+          <?php foreach ($produtos as $produto): ?>
             <div class="col-md-4">
               <div class="card h-100">
-                <img src="../uploads/<?= htmlspecialchars($p['imagem']) ?>" class="card-img-top" alt="<?= htmlspecialchars($p['nome']) ?>">
+                <img src="../uploads/<?= htmlspecialchars($produto['imagem']) ?>" class="card-img-top" alt="<?= htmlspecialchars($produto['nome']) ?>">
                 <div class="card-body">
-                  <h5 class="card-title"><?= htmlspecialchars($p['nome']) ?></h5>
-                  <p class="card-text">R$ <?= number_format($p['preco'], 2, ',', '.') ?></p>
-                  <p class="card-text"><small class="text-muted"><?= $p['categoria'] ?> - <?= $p['raridade'] ?> - <?= $p['universo'] ?></small></p>
+                  <h5 class="card-title"><?= htmlspecialchars($produto['nome']) ?></h5>
+                  <p class="card-text">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
+                  <p class="card-text"><small class="text-muted"><?= $produto['categoria'] ?> - <?= $produto['raridade'] ?> - <?= $produto['universo'] ?></small></p>
                   <a href="#" class="btn btn-primary w-100">Ver mais</a>
                 </div>
               </div>
             </div>
-          <?php endwhile; ?>
+          <?php endforeach; ?>
 
         </div>
       </div>
