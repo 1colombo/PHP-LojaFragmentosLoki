@@ -66,7 +66,7 @@ $produtos = $result->fetch_all(MYSQLI_ASSOC);
                 <div class="card-body">
                   <h5 class="card-title"><?= htmlspecialchars($produto['nome']) ?></h5>
                   <p class="card-text">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
-                  <p class="card-text"><small class="text-muted"><?= $produto['categoria'] ?> - <?= $produto['raridade'] ?> - <?= $produto['universo'] ?></small></p>
+                  <p class="card-text"><small class="text-muted"><?= $produto['categoria_nome'] ?> - <?= $produto['raridade'] ?> - <?= $produto['universo'] ?></small></p>
                   <a href="#" class="btn btn-primary w-100">Ver mais</a>
                 </div>
               </div>
