@@ -79,7 +79,7 @@ $categorias = mysqli_query($conn, "SELECT * FROM categorias");
         <?php if (isLoggedIn()): ?>
           Olá, <?= htmlspecialchars($_SESSION['nome']) ?>!
         <?php else: ?>
-          <a href="../usuarios/login.php" class="btn btn-warning">Entrar</a>
+          <a href="../usuarios/login.php" class="btn btn-dark">Entrar</a>
         <?php endif; ?>
       </span>
 
