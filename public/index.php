@@ -126,7 +126,9 @@ $produtos = $result->fetch_all(MYSQLI_ASSOC);
                     <input type="hidden" name="id" value="<?= $produto['idProdutos'] ?>">
                     <input type="hidden" name="nome" value="<?= $produto['nome'] ?>">
                     <input type="hidden" name="preco" value="<?= $produto['preco'] ?>">
-                    <button type="submit" class="btn btn-sm btn-success mt-2">Adicionar ao carrinho</button>
+                    <?php if(isLoggedIn()): ?>
+                      <button type="submit" class="btn btn-sm btn-success mt-2">Adicionar ao carrinho</button>
+                    <?php endif?>
                   </form>
                 </div>
               </div>
